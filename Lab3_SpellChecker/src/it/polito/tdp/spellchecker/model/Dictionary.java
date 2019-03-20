@@ -7,6 +7,7 @@ public class Dictionary {
 	public List<String> dizionario = new LinkedList<String>();
 
 	public void loadDictionary(String language) {
+		
 
 		try {
 			FileReader fr = new FileReader("rsc/" + language + ".txt");
@@ -16,6 +17,7 @@ public class Dictionary {
 				dizionario.add(word);
 			}
 			br.close();
+			
 		} catch (IOException e) {
 			System.out.println("Errore nella lettura del file");
 		}
@@ -24,16 +26,19 @@ public class Dictionary {
 
 	public List<RichWord> spellCheckText(List<String> inputTextList) {
 		List<RichWord> parole = new LinkedList<RichWord>();
-		boolean trovato = false;
+		
+		boolean trovato =false;
+		
 		for (String s : inputTextList) {
-			for (String sd : dizionario) {
-				if (s.equals(sd)) {
+			RichWord parola = new RichWord(s);
+			
+				if (dizionario.contains(s)) {
 					trovato = true;
-				}
+				}else trovato=false;
+			
 
-			}
-			RichWord parola = new RichWord(s, trovato);
 			parole.add(parola);
+			parola.setGiusto(trovato);
 		}
 		return parole;
 

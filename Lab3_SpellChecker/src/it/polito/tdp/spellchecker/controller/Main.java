@@ -11,7 +11,7 @@ import javafx.fxml.FXMLLoader;
 	public void start(Stage primaryStage) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("SpellChecker.fxml"));
-			BorderPane root = (BorderPane)loader.load(); root = (BorderPane)FXMLLoader.load(getClass().getResource("SpellChecker.fxml"));
+			BorderPane root = (BorderPane)loader.load();
 			
 			
 			Dictionary model = new Dictionary();
